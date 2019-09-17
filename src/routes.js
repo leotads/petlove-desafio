@@ -1,9 +1,8 @@
 'use strict';
 
-const routes = require('express').Router();
+module.exports = app => {
+  app.get('/', (req, res) => { res.json({ hello: 'World'}) });
 
-routes.get('/', (req, res, next) => {
-  res.json({ hello: 'World' })
-});
-
-module.exports = routes;
+  app.route('/rankingdoppelgangers')
+    .get(app.src.api.doppelganger.DoppelGangers)
+}
